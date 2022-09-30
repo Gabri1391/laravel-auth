@@ -13,10 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('guest.home');
-});
 
 Auth::routes();
 
-Route::get('/admin', 'HomeController@index')->middleware('auth')->name('admin.home');
+Route::get('/admin', 'Admin\HomeController@index')->middleware('auth')->name('admin.home');
+
+//Rotte protette dall'amministrazione
+Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group( function(){
+    //Home amministratore
+    Route::get('/', 'HomeController@index')->name('home');
+
+    //Resource POST
+    //Route::resource('posts', 'PostController');
+
+    Route::get('/{any}', function () {
+        abort('404');
+    })->where('any', '.*');
+});
+
+
+Route::get('/{any?}', function () {
+    return view('guest.home');
+})->where('any', '.*');
