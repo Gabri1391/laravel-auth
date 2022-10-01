@@ -23,7 +23,7 @@
                 <th scope="col">Titolo</th>
                 <th scope="col">Creato il</th>
                 <th scope="col">Modificato il</th>
-                <th>Azioni</th>
+                <th class="text-center">Azioni</th>
               </tr>
             </thead>
             <tbody>
@@ -35,7 +35,10 @@
                     <td>{{ $post->updated_at }}</td>
                     <td class="d-flex">
                         <a class="btn btn-sm btn-primary mr-2" href="{{ route('admin.posts.show', $post)}}">
-                            <i class="fa-solid fa-eye"></i>Vedi
+                            <i class="fa-solid fa-eye mr-2"></i>Vedi
+                        </a>
+                        <a class="btn btn-sm btn-warning mr-2" href="{{ route('admin.posts.edit', $post)}}">
+                            <i class="fa-solid fa-pencil"></i>Modifica
                         </a>
                         <form action="{{ route('admin.posts.destroy', $post->id)}}" method="POST">
                             @csrf
