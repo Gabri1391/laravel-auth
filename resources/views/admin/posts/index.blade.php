@@ -1,10 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @if(session('message'))
-        <div class="alert alert-{{ session('type') ?? 'info' }} pl-4">{{ session('message')}}</div>
-    @endif
-
+   @include('includes.alert')
 <div class="container">
 
     <header>
@@ -29,10 +26,18 @@
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->created_at }}</td>
                     <td>{{ $post->updated_at }}</td>
-                    <td>
-                        <a class="btn btn-sm btn-primary" href="{{ route('admin.posts.show', $post)}}">
+                    <td class="d-flex">
+                        <a class="btn btn-sm btn-primary mr-2" href="{{ route('admin.posts.show', $post)}}">
                             <i class="fa-solid fa-eye"></i>Vedi
                         </a>
+                        <form action="{{ route('admin.posts.destroy', $post->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                                <button class="btn btn-sm btn-danger" type="submit">
+                                    <i class="fa-solid fa-trash mr-2"></i>Elimina
+                                </button>
+                           </form>
+                        
                     </td>
                   </tr>
                 @empty
