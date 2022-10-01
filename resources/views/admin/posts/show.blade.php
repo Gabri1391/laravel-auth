@@ -17,11 +17,20 @@
         </div>
         <time><strong>Ultima modifica: </strong>{{ $post->updated_at}}</time>
     </div>
-    <footer class="d-flex align-items-center justify-content-end">
+    
+    <footer class="d-flex align-items-center justify-content-between">
         <a href="{{ route('admin.posts.index')}}" class="btn btn-secondary mr-5">
             <i class="fa-solid fa-rotate-left mr-2"></i>Torna indietro
         </a>
-
+        <div class="d-flex align-items-center justify-content-end">
+           <form action="{{ route('admin.posts.destroy', $post->id)}}" method="POST">
+            @csrf
+            @method('DELETE')
+                <button class="btn btn-danger mr-5" type="submit">
+                    <i class="fa-solid fa-trash mr-2"></i>Elimina
+                </button>
+           </form>
+        </div>
     </footer>
 
 
