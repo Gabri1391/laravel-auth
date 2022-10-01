@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'DESC')->orderBy('crated_at')->get();
+        $posts = Post::orderBy('created_at', 'DESC')->orderBy('created_at')->get();
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -43,12 +43,12 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Post $post
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        return view('admin.posts.show', compact('post'));
     }
 
     /**

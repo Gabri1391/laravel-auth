@@ -26,6 +26,11 @@
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->created_at }}</td>
                     <td>{{ $post->updated_at }}</td>
+                    <td>
+                        <a class="btn btn-sm btn-primary" href="{{ route('admin.posts.show', $post)}}">
+                            <i class="fa-solid fa-eye"></i>Vedi
+                        </a>
+                    </td>
                   </tr>
                 @empty
                     <tr><td colspan="6"> <h3 class="text-center">Non ci sono post </h3></td></tr>
