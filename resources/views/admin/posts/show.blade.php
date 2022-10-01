@@ -24,6 +24,9 @@
             <i class="fa-solid fa-rotate-left mr-2"></i>Torna indietro
         </a>
         <div class="d-flex align-items-center justify-content-end">
+            <a class="btn btn-warning mr-2" href="{{ route('admin.posts.edit', $post)}}">
+                <i class="fa-solid fa-pencil"></i>Modifica
+            </a>
            <form action="{{ route('admin.posts.destroy', $post->id)}}" method="POST">
             @csrf
             @method('DELETE')
