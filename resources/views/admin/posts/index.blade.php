@@ -4,8 +4,15 @@
    @include('includes.alert')
 <div class="container">
 
-    <header>
-        <h2 class="ml-3">Lista dei Post</h2>
+    <header class="d-flex align-items-center justify-content-between">
+        <div>
+            <h2 class="ml-3">Lista dei Post</h2>
+        </div>
+        <div>
+            <a class="btn btn-success" href="{{ route('admin.posts.create')}}">
+                <i class="fa-solid fa-plus mr-2"></i>Crea nuovo post
+            </a>
+        </div>
     </header>
     
     <main>

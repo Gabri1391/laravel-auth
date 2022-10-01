@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+  <div class="container mt-5">
     <header>
-        <h2 class="ml-5">{{ $post->title}}</h2>
+        <h2>{{ $post->title}}</h2>
     </header>
 
     <hr>
 
-    <div class="clearfix ml-5"></div>
+    <div class="clearfix ml-5 mt-3"></div>
         @if ($post->image)
             <img class="float-left ml-3 mr-3" src="{{ $post->image }}" alt="{{ $post->title }}">
         @endif
@@ -18,7 +19,7 @@
         <time><strong>Ultima modifica: </strong>{{ $post->updated_at}}</time>
     </div>
     
-    <footer class="d-flex align-items-center justify-content-between">
+    <footer class="d-flex align-items-center justify-content-between container mt-3">
         <a href="{{ route('admin.posts.index')}}" class="btn btn-secondary mr-5">
             <i class="fa-solid fa-rotate-left mr-2"></i>Torna indietro
         </a>
@@ -32,6 +33,7 @@
            </form>
         </div>
     </footer>
+  </div>
 
 
 @endsection
