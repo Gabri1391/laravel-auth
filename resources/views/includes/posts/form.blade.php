@@ -19,12 +19,25 @@
     @csrf
       <div class="row">
 
-       <div class="col-12">
+       <div class="col-9">
            <div class="form-group">
                <label for="title">Titolo</label>
                <input type="text" class="form-control" id="title" name="title" value="{{ old('title', $post->title) }}" required minlength="3">
            </div>
        </div>
+
+       <div class="col-3">
+            <div class="form-group">
+                <label for="category_id">Seleziona categoria</label>
+                <select class="form-control" id="category_id" name="category_id">
+                <option value="">Nessuna categoria</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->label }}</option>
+                @endforeach
+                </select>
+            </div>
+       </div>
+    
 
        <div class="col-12">
            <div class="form-group">

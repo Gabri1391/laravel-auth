@@ -1908,7 +1908,14 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "App",
+  data: function data() {
+    return {
+      title: "Page work in progress..stay tuned!"
+    };
+  }
+});
 
 /***/ }),
 
@@ -1929,7 +1936,7 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "title m-b-md"
-  }, [_vm._v("\n     Page work in progress..stay tuned!\n ")]);
+  }, [_vm._v(" " + _vm._s(_vm.title) + "  ")]);
 };
 
 var staticRenderFns = [];
