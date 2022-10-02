@@ -44,13 +44,15 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|string|min:3|unique:posts',
             'content' => 'required|string',
-            'image' => 'nullable|url'
+            'image' => 'nullable|url',
+            'category_id' => 'nullable|exist:categories,id'
         ],
         [
             'title.required' => 'Il titolo é obbligatorio',
             'title.min' => 'Il titolo deve essere lungo almeno 5 caratteri',
             'title.unique' => "Esiste già un post con questo titolo",
-            'image.url' => 'Url non valido'
+            'image.url' => 'Url non valido',
+            'category_id.exists' => 'Categoria inesistente'
         ]);
 
         $data = $request->all();
@@ -85,7 +87,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::select('id', 'label')->get();
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
     /**
