@@ -45,7 +45,7 @@ class PostController extends Controller
             'title' => 'required|string|min:3|unique:posts',
             'content' => 'required|string',
             'image' => 'nullable|url',
-            'category_id' => 'nullable|exist:categories,id'
+            'category_id' => 'nullable|exists:categories,id'
         ],
         [
             'title.required' => 'Il titolo é obbligatorio',
