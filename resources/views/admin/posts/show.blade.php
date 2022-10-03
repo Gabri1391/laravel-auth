@@ -14,10 +14,18 @@
         @endif
         <p><strong>Categoria: </strong>
             @if ($post->category)
-            {{$post->category->label}}</p>
+            {{$post->category->label}}
             @else
             -
             @endif
+        </p>
+        <p><strong>Autore: </strong>
+            @if ($post->user_id)
+            {{$post->user->name}}
+            @else
+            -
+            @endif
+        </p>
         <p>{{ $post->content }}</p>
         <div>
             <time class="mr-2"><strong>Creato il: </strong>{{ $post->created_at}}</time>
