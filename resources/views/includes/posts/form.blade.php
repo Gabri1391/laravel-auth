@@ -66,7 +66,13 @@
                 <h5>Tags</h5>
                 @foreach($tags as $tag)
                 <div class="form-group form-check form-check-inline">
-                    <input type="checkbox" class="form-check-input" id="{{ $tag->label }}">
+                    <input type="checkbox" 
+                            class="form-check-input" 
+                            id="{{ $tag->label }}" 
+                            name="tags[]" 
+                            value="{{ $tag->id }}"
+                            @if(in_array($tag->id, old('tags', []))) checked @endif
+                    >
                     <label class="form-check-label" for="{{ $tag->label }}">{{ $tag->label }}</label>
                 </div>
                 @endforeach

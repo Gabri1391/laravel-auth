@@ -48,14 +48,16 @@ class PostController extends Controller
             'title' => 'required|string|min:3|unique:posts',
             'content' => 'required|string',
             'image' => 'nullable|url',
-            'category_id' => 'nullable|exists:categories,id'
+            'category_id' => 'nullable|exists:categories,id',
+            'tags' => 'nullable|exist:tags,id'
         ],
         [
             'title.required' => 'Il titolo é obbligatorio',
             'title.min' => 'Il titolo deve essere lungo almeno 5 caratteri',
             'title.unique' => "Esiste già un post con questo titolo",
             'image.url' => 'Url non valido',
-            'category_id.exists' => 'Categoria inesistente'
+            'category_id.exists' => 'Categoria inesistente',
+            'tag.exists' => 'Uno dei tag non è valido, per favore riprova'
         ]);
 
         $data = $request->all();
@@ -66,6 +68,8 @@ class PostController extends Controller
         $post->user_id = Auth::id();
 
         $post->save();
+
+        if(array_key_exists('tags', $data)) $post->tags()->attach($data['tags']);
 
         return redirect()->route('admin.posts.show', $post)
         ->with('message', 'Il post è stato creato con successo')
