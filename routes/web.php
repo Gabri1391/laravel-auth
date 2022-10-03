@@ -23,6 +23,8 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     //Home amministratore
     Route::get('/', 'HomeController@index')->name('home');
 
+    Route::get('/users', 'UserController@index')->name('users.index');
+
     //Resource POST
     Route::resource('posts', 'PostController');
 
