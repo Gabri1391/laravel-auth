@@ -60,6 +60,7 @@ class PostController extends Controller
 
         $post = new Post();
         $post->fill($data);
+        
         $post->user_id = Auth::id();
 
         $post->save();
